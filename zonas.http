@@ -2,6 +2,23 @@
 GET http://localhost:8080/api/v1/zonas-de-risco
 Accept: application/json
 
-### Buscar o caminho de simulação
-GET http://localhost:8080/api/v1/caminho
-Accept: application/json
+
+### Simular a verificação de localização do usuário (DENTRO da zona de risco)
+# @name checkLocationInRisk
+POST http://localhost:8080/api/demo/check-location
+Content-Type: application/json
+
+{
+  "lat": -23.537,
+  "lng": -46.637
+}
+
+### Simular a verificação de localização do usuário (FORA da zona de risco)
+# @name checkLocationSafe
+POST http://localhost:8080/api/demo/check-location
+Content-Type: application/json
+
+{
+  "lat": 0.0,
+  "lng": 0.0
+}

@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ZonaDeRiscoRepository extends JpaRepository<ZonaDeRisco, Long> {
 
-    @Query(value = "SELECT count(z) > 0 FROM ZonaDeRisco z WHERE ST_Contains(z.area, ST_SetSRID(ST_MakePoint(:longitude, :latitude), 4326)) = true")
-    boolean isPontoEmZonaDeRisco(@Param("longitude") double longitude, @Param("latitude") double latitude);
-
+    @Query(
+            value = "SELECT count(*) > 0 FROM zonas_de_risco WHERE ST_Contains(area, ST_SetSRID(ST_MakePoint(?1, ?2), 4326))",
+            nativeQuery = true
+    )
+    boolean isPontoEmZonaDeRisco(double longitude, double latitude);
 }

@@ -5,19 +5,19 @@
     <title>Painel de Controle - GeoProtect</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet.animatedmarker@1.0.0/src/AnimatedMarker.js"></script>
     <style>
         #map { height: 80vh; width: 100%; }
     </style>
 </head>
 <body>
 <h1>Painel de Controle da Demonstração</h1>
-<p>A simulação começará automaticamente. Clique no mapa para definir uma localização estática.</p>
+<p>Clique no mapa para definir uma localização e verificar se está em uma zona de risco.</p>
+
 <div id="map"></div>
 
 <script>
     // =================================================================
-    // 1. INICIALIZAÇÃO DO MAPA E VARIÁVEIS GLOBAIS
+    // 1. INICIALIZAÇÃO E VARIÁVEIS
     // =================================================================
     var map = L.map('map').setView([-23.550520, -46.633308], 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -26,78 +26,39 @@
     var staticLocationMarker = null;
 
     // =================================================================
-    // 2. FUNÇÃO REUTILIZÁVEL PARA O CLIQUE NO MAPA (ESTÁTICO)
+    // 2. FUNÇÃO PARA CLIQUE ESTÁTICO
     // =================================================================
     function handleStaticMapClick(e) {
         const lat = e.latlng.lat;
         const lng = e.latlng.lng;
         const locationData = { lat: lat, lng: lng };
 
-        fetch('/api/demo/update-location', {
+        fetch('/api/demo/check-location', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(locationData)
-        }).then(response => {
-            if (response.ok) {
-                if (staticLocationMarker) map.removeLayer(staticLocationMarker);
-                staticLocationMarker = L.marker([lat, lng]).addTo(map)
-                    .bindPopup('Localização estática definida aqui!')
-                    .openPopup();
-            }
+        })
+        .then(response => response.json())
+        .then(status => {
+            if (staticLocationMarker) map.removeLayer(staticLocationMarker);
+            staticLocationMarker = L.marker([lat, lng]).addTo(map)
+                .bindPopup(`<b>Status:</b> ${status.message}`)
+                .openPopup();
         });
     }
 
     // =================================================================
-    // 3. LÓGICA DE CARREGAMENTO INICIAL DA PÁGINA
+    // 3. LÓGICA DE CARREGAMENTO INICIAL
     // =================================================================
 
-    // 3.1 - Buscar e desenhar as Zonas de Risco
+    // Desenhar Zonas de Risco no mapa
     fetch('/api/v1/zonas-de-risco')
         .then(response => response.json())
         .then(zonas => {
             zonas.forEach(zona => {
                 const latLngs = zona.area.coordinates[0].map(coord => [coord[1], coord[0]]);
                 const polygon = L.polygon(latLngs, { color: 'red', fillColor: '#f03', fillOpacity: 0.5 });
-                polygon.on('click', (e) => {
-                    L.popup().setLatLng(e.latlng).setContent('<b>Zona: </b>' + zona.nome).openOn(map);
-                    handleStaticMapClick(e);
-                });
                 polygon.addTo(map);
-            });
-        });
-
-    // 3.2 - Buscar o caminho e iniciar a animação do pino
-    fetch('/api/v1/caminho')
-        .then(response => response.json())
-        .then(caminho => {
-            const latLngs = caminho.trajeto.coordinates.map(coord => [coord[1], coord[0]]);
-
-            let totalDistance = 0;
-            for (let i = 0; i < latLngs.length - 1; i++) {
-                totalDistance += map.distance(latLngs[i], latLngs[i + 1]);
-            }
-
-            const desiredDurationSeconds = 90;
-            const speedMetersPerSecond = totalDistance / desiredDurationSeconds;
-            const intervalMilliseconds = 10000; // Agora atualiza a cada 1 segundo
-            const distancePerStep = speedMetersPerSecond * (intervalMilliseconds / 1000);
-
-            const animatedMarker = L.animatedMarker(latLngs, {
-                distance: distancePerStep,
-                interval: intervalMilliseconds,
-                autoStart: true,
-                onEnd: function() { this.remove(); }
-            });
-
-            map.addLayer(animatedMarker);
-
-            animatedMarker.on('move', function(e) {
-                const locationData = { lat: e.latlng.lat, lng: e.latlng.lng };
-                fetch('/api/demo/update-location', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(locationData)
-                });
             });
         });
 
