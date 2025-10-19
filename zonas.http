@@ -1,0 +1,7 @@
+### Listar todas as zonas de risco
+GET http://localhost:8080/api/v1/zonas-de-risco
+Accept: application/json
+
+### Buscar o caminho de simulação
+GET http://localhost:8080/api/v1/caminho
+Accept: application/json
