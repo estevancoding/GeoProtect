@@ -25,6 +25,6 @@ Este projeto visa aplicar conceitos modernos de desenvolvimento de software, des
 
 ## Integrantes do Grupo
 
-Jordan Estevan Rodrigues Dos Santos - 125221103657
-Gustavo Lopes Silva - 12522212116
-Vilson da Silva Juvencio Junior - 12522218378
+- Jordan Estevan Rodrigues Dos Santos - 125221103657
+- Gustavo Lopes Silva - 12522212116
+- Vilson da Silva Juvencio Junior - 12522218378
