@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-O **GeoProtect** é uma API RESTful desenvolvida como parte de um projeto universitário. Sua principal função é gerenciar e consultar "Zonas de Risco" geográficas. A aplicação permite o cadastro de áreas poligonais que representam zonas de risco e oferece um serviço para verificar se uma determinada coordenada (latitude e longitude) está localizada dentro de alguma dessas zonas.
+O **GeoProtect** é uma API RESTful desenvolvida como parte de um projeto para a UC Dual com Bradesco. Sua principal função é gerenciar e consultar "Zonas de Risco" geográficas. A aplicação permite o cadastro de áreas poligonais que representam zonas de risco e oferece um serviço para verificar se uma determinada coordenada (latitude e longitude) está localizada dentro de alguma dessas zonas.
 
 Este projeto visa aplicar conceitos modernos de desenvolvimento de software, desde a criação de uma API robusta até a preparação para implantação em contêineres e na nuvem.
 
