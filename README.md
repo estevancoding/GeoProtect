@@ -4,7 +4,7 @@
 
 **GeoProtect** is a RESTful API developed as part of a university project. Its main function is to manage and query geographic "Risk Zones." The application allows for the registration of polygonal areas representing risk zones and provides a service to check if a given coordinate (latitude and longitude) is located within any of these zones.
 
-## Technologies Used
+## Technologies
 
 - **Backend:**
   - Java 21
