@@ -14,8 +14,6 @@
   - Hibernate Spatial (for handling geospatial data)
 - **Database:**
   - PostgreSQL with the PostGIS extension
-- **Testing:**
-  - JUnit 5 and Mockito (to be implemented)
 - **Infrastructure:**
   - Docker and Docker Compose
 - **Build:**
