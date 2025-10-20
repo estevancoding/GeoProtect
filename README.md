@@ -1,30 +1,28 @@
 # GeoProtect API
 
-## Visão Geral
+## Overview
 
-O **GeoProtect** é uma API RESTful desenvolvida como parte de um projeto para a UC Dual com Bradesco. Sua principal função é gerenciar e consultar "Zonas de Risco" geográficas. A aplicação permite o cadastro de áreas poligonais que representam zonas de risco e oferece um serviço para verificar se uma determinada coordenada (latitude e longitude) está localizada dentro de alguma dessas zonas.
+**GeoProtect** is a RESTful API developed as part of a university project. Its main function is to manage and query geographic "Risk Zones." The application allows for the registration of polygonal areas representing risk zones and provides a service to check if a given coordinate (latitude and longitude) is located within any of these zones.
 
-Este projeto visa aplicar conceitos modernos de desenvolvimento de software, desde a criação de uma API robusta até a preparação para implantação em contêineres e na nuvem.
-
-## Tecnologias Utilizadas
+## Technologies Used
 
 - **Backend:**
   - Java 21
   - Spring Boot 3.5.6
-  - Spring Web (para a API REST)
-  - Spring Data JPA (para persistência de dados)
-  - Hibernate Spatial (para manipulação de dados geoespaciais)
-- **Banco de Dados:**
-  - PostgreSQL com a extensão PostGIS
-- **Testes:**
-  - JUnit 5 e Mockito (a serem implementados)
-- **Infraestrutura:**
-  - Docker e Docker Compose
+  - Spring Web (for the REST API)
+  - Spring Data JPA (for data persistence)
+  - Hibernate Spatial (for handling geospatial data)
+- **Database:**
+  - PostgreSQL with the PostGIS extension
+- **Testing:**
+  - JUnit 5 and Mockito (to be implemented)
+- **Infrastructure:**
+  - Docker and Docker Compose
 - **Build:**
   - Maven
 
-## Integrantes do Grupo
+## Group Members
 
-- Jordan Estevan Rodrigues Dos Santos - 125221103657
-- Gustavo Lopes Silva - 12522212116
-- Vilson da Silva Juvencio Junior - 12522218378
+* Jordan Estevan Rodrigues Dos Santos 
+* Gustavo Lopes Silva 
+* Vilson da Silva Juvencio Junior
