@@ -1,0 +1,26 @@
+/* Estilos para a página do Dashboard */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    flex-shrink: 0; /* Impede que o header encolha */
+}
+
+.dashboard-main {
+    flex: 1; /* Ocupa todo o espaço restante */
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.map-container {
+    height: 100%;
+    width: 100%;
+}

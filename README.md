@@ -21,6 +21,6 @@
 
 ## Group Members
 
-* Jordan Estevan Rodrigues Dos Santos 
-* Gustavo Lopes Silva 
-* Vilson da Silva Juvencio Junior
+*   Jordan Estevan Rodrigues Dos Santos - 125221103657
+*   Gustavo Lopes Silva - 12522212116
+*   Vilson da Silva Juvencio Junior - 12522218378

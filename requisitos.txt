@@ -1,0 +1,57 @@
+O Bradesco considera como requisitos e diferenciais para esses desafios o disposto a seguir (tendo em vista que o objetivo da empresa é a futura contratação de estudantes):
+
+• Requisitos:
+
+· Desenvolvimento de aplicações
+
+· Aplicação de lógica de programação
+
+· Utilização da linguagem Java
+
+. Aplicação de conceitos REST API´s
+
+· Spring boot
+
+· Conexão a Base de Dados (Relacional ou Não Relacional)
+
+• Diferenciais:
+
+· Microsserviços
+
+· Containers Docker
+
+· Cloud Azure
+
+· Testes unitários
+
+Requisitos para a disciplina:
+
+✅O projeto pode ser feito em grupos de no máximo 5 alunos.
+
+✅Deve ser utilizada a linguagem Java para a implementação, com Spring / Spring Boot.
+
+✅O grupo deve criar um repositório hospedado no GitHub e colocar o professor como colaborador para acompanhamento. No repositório do GitHub deve constar um arquivo README.md contendo um resumo sobre a proposta do projeto, tecnologias utilizadas e os nomes dos integrantes do grupo.
+
+✅Os dados devem ser armazenados, manipulados e recuperados de um banco de dados.
+
+
+Critérios de avaliação
+
+📌 Correto funcionamento do programa
+
+📌 Cumprimento dos requisitos solicitados
+
+📌 Apresentação e participação dos alunos do grupo durante a exposição e perguntas da banca
+
+
+Trabalhos médios, que apenas cumprem minimamente os requisitos, receberão a nota média.
+
+Trabalhos acima da média, irão receber notas acima da média e, obviamente, trabalhos que não cumprem minimamente os requisitos terão notas abaixo da média.
+
+Diferenciais para notas acima de média (proporcional à entrega):
+
+    Microsserviços
+    Comunicação com mensageria
+    Segurança da aplicação
+    Docker
+    Hospedagem do projeto na nuvem Azure"

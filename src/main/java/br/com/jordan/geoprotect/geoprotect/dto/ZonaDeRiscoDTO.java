@@ -5,8 +5,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.locationtech.jts.geom.Polygon;
 
+/**
+ * DTO para transferência de dados de ZonaDeRisco. Usado para validação
+ * na criação e como objeto de retorno na API.
+ */
 @Data
 public class ZonaDeRiscoDTO {
+
     private Long id;
 
     @NotBlank(message = "O nome não pode ser vazio.")

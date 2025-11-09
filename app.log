@@ -1,0 +1,58 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.6)
+
+2025-11-03T11:49:33.732-03:00  INFO 13718 --- [           main] b.c.j.g.g.GeoProtectApplication          : Starting GeoProtectApplication v0.0.1-SNAPSHOT using Java 25.0.1 with PID 13718 (/run/media/jordan/New Volume/Meus Projetos/GeoProtect/target/GeoProtect-0.0.1-SNAPSHOT.jar started by jordan in /run/media/jordan/New Volume/Meus Projetos/GeoProtect)
+2025-11-03T11:49:33.736-03:00  INFO 13718 --- [           main] b.c.j.g.g.GeoProtectApplication          : No active profile set, falling back to 1 default profile: "default"
+2025-11-03T11:49:35.296-03:00  INFO 13718 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-03T11:49:35.404-03:00  INFO 13718 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 2 JPA repository interfaces.
+2025-11-03T11:49:36.638-03:00  INFO 13718 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-03T11:49:36.666-03:00  INFO 13718 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-03T11:49:36.667-03:00  INFO 13718 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-11-03T11:49:36.707-03:00  INFO 13718 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-03T11:49:36.708-03:00  INFO 13718 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2896 ms
+2025-11-03T11:49:37.089-03:00  INFO 13718 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-03T11:49:37.171-03:00  INFO 13718 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-11-03T11:49:37.186-03:00  INFO 13718 --- [           main] o.h.spatial.integration.SpatialService   : HHH80000001: hibernate-spatial integration enabled : true
+2025-11-03T11:49:37.262-03:00  INFO 13718 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-03T11:49:37.459-03:00  INFO 13718 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-03T11:49:37.819-03:00  INFO 13718 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7b451bf4
+2025-11-03T11:49:37.822-03:00  INFO 13718 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-03T11:49:37.864-03:00  WARN 13718 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-03T11:49:37.889-03:00  INFO 13718 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 15.8
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-03T11:49:37.906-03:00  INFO 13718 --- [           main] org.hibernate.spatial                    : HHH80000003: hibernate-spatial adding type contributions from : org.hibernate.spatial.dialect.postgis.PostgisDialectContributor
+2025-11-03T11:49:38.266-03:00  INFO 13718 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-03T11:49:38.310-03:00  INFO 13718 --- [           main] org.hibernate.spatial                    : HHH80000003: hibernate-spatial adding type contributions from : org.hibernate.spatial.dialect.postgis.PostgisDialectContributor
+2025-11-03T11:49:38.703-03:00  INFO 13718 --- [           main] org.hibernate.spatial                    : HHH80000004: hibernate-spatial adding function contributions from : org.hibernate.spatial.dialect.postgis.PostgisDialectContributor
+2025-11-03T11:49:39.362-03:00  INFO 13718 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-03T11:49:39.465-03:00  INFO 13718 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-03T11:49:40.034-03:00  INFO 13718 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-03T11:49:40.116-03:00  INFO 13718 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name autenticacaoService
+2025-11-03T11:49:40.179-03:00  WARN 13718 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-03T11:49:40.229-03:00  INFO 13718 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-11-03T11:49:40.657-03:00  INFO 13718 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-11-03T11:49:41.414-03:00  INFO 13718 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-11-03T11:49:41.435-03:00  INFO 13718 --- [           main] b.c.j.g.g.GeoProtectApplication          : Started GeoProtectApplication in 8.385 seconds (process running for 9.064)
+Hibernate: select zdr1_0.id,zdr1_0.area,zdr1_0.nome from zonas_de_risco zdr1_0
+Hibernate: select count(*) from usuarios u1_0
+2025-11-03T11:49:51.893-03:00  INFO 13718 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-03T11:49:51.893-03:00  INFO 13718 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-03T11:49:51.895-03:00  INFO 13718 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-11-03T11:51:45.893-03:00  INFO 13718 --- [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-03T11:51:45.899-03:00  INFO 13718 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-11-03T11:51:45.913-03:00  INFO 13718 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-03T11:51:45.918-03:00  INFO 13718 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-11-03T11:51:45.925-03:00  INFO 13718 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
