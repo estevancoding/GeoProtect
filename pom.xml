@@ -1,90 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- O arquivo pom.xml (Project Object Model) é o coração de um projeto Maven. -->
+<!-- Ele define tudo sobre o projeto: dependências, plugins, versões e como construir. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- O "parent" é como uma herança. Nosso projeto herda configurações padrão do Spring Boot, -->
+    <!-- o que simplifica muito nossa configuração. Ele gerencia versões de dependências compatíveis. -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.6</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> <!-- Indica que o Maven deve procurar o "parent" no repositório, não em um caminho local. -->
     </parent>
+
+    <!-- Coordenadas do nosso projeto: identificação única. -->
     <groupId>br.com.jordan.geoprotect</groupId>
     <artifactId>GeoProtect</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>GeoProtect</name>
-    <description>GeoProtect</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <description>Um projeto para gerenciar e consultar zonas de risco geográficas.</description>
+
+    <!-- Propriedades do projeto. Aqui definimos a versão do Java que vamos usar. -->
     <properties>
         <java.version>21</java.version>
     </properties>
+
+    <!-- A seção de "dependencies" é onde listamos todas as bibliotecas que nosso projeto precisa. -->
     <dependencies>
+        <!-- DEPENDÊNCIAS PRINCIPAIS DO SPRING BOOT -->
+
+        <!-- Adiciona endpoints de monitoramento e gerenciamento (/actuator), como /health, /info. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+        <!-- Essencial para persistência de dados. Traz o JPA (Java Persistence API), -->
+        <!-- que é a especificação para mapear objetos Java para um banco de dados relacional. -->
+        <!-- Por padrão, ele vem com o Hibernate como implementação. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-spatial</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.n52.jackson</groupId>
-            <artifactId>jackson-datatype-jts</artifactId>
-            <version>1.2.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
+
+        <!-- Adiciona a capacidade de criar APIs REST (endpoints web). Inclui um servidor web embutido (Tomcat). -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
+        <!-- Fornece suporte para validações, como @Valid nos nossos DTOs, para garantir que os dados recebidos estão corretos. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- DEPENDÊNCIAS GEOESPACIAIS -->
+
+        <!-- Extensão do Hibernate para dar suporte a tipos de dados geográficos (ponto, linha, polígono). -->
+        <!-- É o que nos permite salvar um "Polygon" no banco de dados. -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-spatial</artifactId>
+        </dependency>
+
+        <!-- Biblioteca para que o Jackson (que converte objetos Java para JSON e vice-versa) -->
+        <!-- entenda os tipos de dados geográficos da biblioteca JTS (Java Topology Suite). -->
+        <dependency>
+            <groupId>org.n52.jackson</groupId>
+            <artifactId>jackson-datatype-jts</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+
+        <!-- DEPENDÊNCIAS DE DESENVOLVIMENTO E RUNTIME -->
+
+        <!-- Ferramenta de produtividade. Reinicia a aplicação automaticamente quando detecta mudanças no código. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- O "driver" de conexão que permite que nossa aplicação Java se comunique com o banco de dados PostgreSQL. -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Uma biblioteca fantástica que reduz código repetitivo (boilerplate) como getters, setters, construtores, etc. -->
+        <!-- Usamos anotações como @Getter, @Setter, @Data. -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- DEPENDÊNCIA DE TESTE -->
+
+        <!-- Pacote padrão para testes em aplicações Spring. Inclui JUnit, Mockito e outras ferramentas essenciais. -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <scope>test</scope> <!-- O escopo "test" significa que esta biblioteca só é usada na fase de testes. -->
+        </dependency>
+
+        <!-- DEPENDÊNCIAS DE SEGURANÇA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.4.0</version>
         </dependency>
     </dependencies>
 
+    <!-- A seção "build" define como o Maven deve construir o projeto. -->
     <build>
         <plugins>
+            <!-- Plugin principal do Spring Boot para empacotar a aplicação em um JAR executável. -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- Excluímos o Lombok do JAR final, pois ele é uma ferramenta de compilação e não é necessário em runtime. -->
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <!-- Plugin que garante que o Lombok funcione corretamente durante a compilação. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -98,16 +151,27 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-frontend</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>frontend-admin/dist</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
