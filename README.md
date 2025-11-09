@@ -39,17 +39,6 @@ The system is secured by JWT-based authentication, ensuring that only authorized
 
 ---
 
-### 2. Environment Variables (Backend)
-The backend application uses environment variables for security settings. You can set them in your operating system or directly in your IDE (IntelliJ).
-
-| Variable | Description | Default Value (Development) |
-| :--- | :--- | :--- |
-| `JWT_SECRET` | Secret key for signing JWTs. | `my-secret-key-for-dev-env-only-change-in-prod` |
-| `ADMIN_EMAIL` | Email for the default admin user. | `admin@geoprotect.com` |
-| `ADMIN_PASSWORD` | Password for the default admin user. | `password` |
-
----
-
 ## Authors
 
 *   Jordan Estevan Rodrigues Dos Santos
