@@ -1,6 +1,6 @@
-// Arquivo para armazenar constantes usadas na aplicação frontend.
 
-import { LatLngExpression } from "leaflet";
+// Arquivo para armazenar constantes usadas na aplicação frontend.
+import type {LatLngExpression} from "leaflet";
 
 // Configurações padrão para o mapa
 export const MAP_CENTER: LatLngExpression = [-23.55052, -46.633308];

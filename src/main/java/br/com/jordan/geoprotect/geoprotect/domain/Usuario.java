@@ -34,8 +34,6 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    // TODO: Implementar uma entidade Role separada para um modelo mais robusto.
-    // Por simplicidade inicial, estamos usando uma String de roles separadas por vírgula.
     @Column(nullable = false)
     private String roles = "ROLE_USER";
 
@@ -57,21 +55,21 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; // Por padrão, contas não expiram
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true; // Por padrão, contas não são bloqueadas
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // Por padrão, credenciais não expiram
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true; // Por padrão, usuários estão habilitados
+        return true;
     }
 }

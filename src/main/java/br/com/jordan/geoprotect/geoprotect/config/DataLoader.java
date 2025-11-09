@@ -49,7 +49,6 @@ public class DataLoader implements CommandLineRunner {
     @Value("${app.admin.password}")
     private String adminPassword;
 
-    // Construtor padrão é suficiente, pois estamos usando injeção de campo.
     public DataLoader() {
     }
 

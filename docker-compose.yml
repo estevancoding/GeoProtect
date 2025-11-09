@@ -1,37 +1,17 @@
-# A seção 'services' é onde definimos os diferentes contêineres que compõem nossa aplicação.
-# Por enquanto, temos apenas um serviço: o banco de dados.
+
+# Define os serviços para o ambiente de desenvolvimento local.
 services:
-  # Este é o nome lógico do nosso serviço de banco de dados.
   postgres-db:
-    # Especifica a imagem Docker que será usada para criar o contêiner.
-    # 'postgis/postgis:15-3.4' é uma imagem oficial que já vem com o PostgreSQL 15
-    # e a extensão PostGIS 3.4, pronta para trabalhar com dados geoespaciais.
     image: postgis/postgis:15-3.4
-
-    # Define um nome customizado para o nosso contêiner, facilitando a identificação.
     container_name: geoprotect_db
-
-    # 'environment' permite definir variáveis de ambiente dentro do contêiner.
-    # É aqui que configuramos o usuário, a senha e o nome do banco de dados inicial.
-    # Estes valores devem corresponder aos que estão no 'application.properties' da nossa aplicação Spring.
     environment:
       POSTGRES_USER: geoprotectuser
       POSTGRES_PASSWORD: geoprotectpass
       POSTGRES_DB: geoprotectdb
-
-    # A seção 'ports' mapeia uma porta do seu computador (host) para uma porta dentro do contêiner.
-    # A linha '- "5432:5432"' significa: 'Encaminhe as requisições que chegam na porta 5432 do meu PC
-    # para a porta 5432 do contêiner', que é a porta padrão do PostgreSQL.
     ports:
       - "5432:5432"
-
-    # 'volumes' são usados para persistir dados, mesmo que o contêiner seja removido e recriado.
-    # A linha abaixo cria um volume chamado 'geoprotect_data' e o monta no diretório
-    # onde o PostgreSQL armazena seus dados dentro do contêiner.
-    # Isso garante que nossas zonas de risco não sejam perdidas.
     volumes:
       - geoprotect_data:/var/lib/postgresql/data
 
-# A seção 'volumes' no nível raiz declara o volume que será gerenciado pelo Docker.
 volumes:
   geoprotect_data:
