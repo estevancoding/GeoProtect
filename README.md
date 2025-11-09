@@ -1,4 +1,4 @@
-# GeoProtect: Risk Zone Simulation Platform
+# GeoProtect
 
 ## Overview
 
@@ -38,24 +38,6 @@ The system is secured by JWT-based authentication, ensuring that only authorized
 | **Authentication** | JSON Web Token (JWT) |
 
 ---
-
-## Prerequisites
-
-To run this project, you will need to have the following installed on your machine:
-- Java JDK 21 or higher.
-- Apache Maven 3.8 or higher.
-- Node.js 18 or higher (with NPM).
-- Docker and Docker Compose (for the database).
-
----
-
-## Environment Setup
-
-### 1. Database
-The PostgreSQL database with the PostGIS extension is managed by Docker. To start it, run the following command in the project root:
-```bash
-docker-compose up -d
-```
 
 ### 2. Environment Variables (Backend)
 The backend application uses environment variables for security settings. You can set them in your operating system or directly in your IDE (IntelliJ).
