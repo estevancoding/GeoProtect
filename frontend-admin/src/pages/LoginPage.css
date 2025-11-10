@@ -3,12 +3,12 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f2f5;
+    background-color: #282828;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .login-form {
-    background-color: #ffffff;
+    background-color: #333333;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -21,7 +21,7 @@
 
 .login-form h2 {
     font-size: 28px;
-    color: #333;
+    color: #eeeeee;
     margin-bottom: 30px;
     text-align: center;
     font-weight: 600;
@@ -31,15 +31,15 @@
 .login-form input[type="password"] {
     padding: 12px 15px;
     margin-bottom: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #555555;
     border-radius: 8px;
     font-size: 16px;
-    color: #333;
+    color: #eeeeee;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-form input::placeholder {
-    color: #888; /* Cor mais escura para o placeholder */
+    color: #aaaaaa; /* Cor mais escura para o placeholder */
 
 .login-form input[type="email"]:focus,
 .login-form input[type="password"]:focus {
