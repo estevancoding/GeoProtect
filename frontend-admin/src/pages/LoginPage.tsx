@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { login as apiLogin } from '../services/api';
+import './LoginPage.css';
 
 const LoginPage: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -20,35 +21,33 @@ const LoginPage: React.FC = () => {
             login(token);
             navigate('/dashboard');
         } catch (err) {
-            setError('Invalid email or password');
+            setError('Email ou senha inválidos');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
-                <h2>Login</h2>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="login-container">
+            <form onSubmit={handleSubmit} className="login-form">
+                <h2>Entrar</h2>
+                {error && <p className="error-message">{error}</p>}
                 <input
                     type="email"
-                    placeholder="Email"
+                    placeholder="E-mail"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    style={{ marginBottom: '10px', padding: '8px' }}
                     disabled={loading}
                 />
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Senha"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    style={{ marginBottom: '10px', padding: '8px' }}
                     disabled={loading}
                 />
-                <button type="submit" style={{ padding: '10px' }} disabled={loading}>
-                    {loading ? 'Logging in...' : 'Login'}
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Entrando...' : 'Entrar'}
                 </button>
             </form>
         </div>

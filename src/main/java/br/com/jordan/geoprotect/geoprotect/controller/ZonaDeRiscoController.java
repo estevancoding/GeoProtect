@@ -61,7 +61,7 @@ public class ZonaDeRiscoController {
 
         if (emZonaDeRisco) {
             log.warn("ALERTA! Coordenada [lat:{}, lon:{}] está DENTRO da zona de risco!", locationDTO.getLat(), locationDTO.getLng());
-            StatusDTO status = new StatusDTO(true, "Você está em uma área de risco! Medidas de segurança extras ativadas.");
+            StatusDTO status = new StatusDTO(true, "Você está em uma área de risco!");
             return ResponseEntity.ok(status);
         } else {
             log.info("Coordenada [lat:{}, lon:{}] está FORA da zona de risco.", locationDTO.getLat(), locationDTO.getLng());

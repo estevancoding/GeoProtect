@@ -4,10 +4,12 @@ import { MapContainer, TileLayer, Polygon, Marker, Popup, useMapEvents } from 'r
 import { type LatLngExpression, LatLng, Icon } from 'leaflet';
 import { createAuthenticatedApi, checkLocation } from '../services/api';
 import { MAP_CENTER, MAP_ZOOM, TILE_LAYER_ATTRIBUTION, TILE_LAYER_URL } from '../constants';
-import './DashboardPage.css'; // Importa os estilos CSS
-import 'leaflet/dist/leaflet.css'; // Importa o CSS do Leaflet
+import Notification from '../components/Notification';
+import './DashboardPage.css';
+import 'leaflet/dist/leaflet.css';
+import '../components/Notification.css';
 
-// --- Interfaces movidas para cá para evitar erro de módulo ---
+// --- Interfaces ---
 export interface GeoJsonPolygon {
     type: "Polygon";
     coordinates: number[][][];
@@ -17,9 +19,13 @@ export interface ZonaDeRisco {
     nome: string;
     area: GeoJsonPolygon;
 }
-// ---------------------------------------------------------
+export interface Status {
+    inRiskArea: boolean;
+    message: string;
+}
+// ------------------
 
-// Configuração do ícone padrão para os marcadores
+// --- Icon Configuration ---
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -27,7 +33,6 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 const redOptions = { color: 'red' };
 
 const DashboardPage: React.FC = () => {
-    // Move a criação do ícone para dentro do componente
     const defaultIcon = new Icon({
         iconUrl: markerIcon,
         iconRetinaUrl: markerIcon2x,
@@ -41,15 +46,30 @@ const DashboardPage: React.FC = () => {
     const { token } = useAuth();
     const [zones, setZones] = useState<ZonaDeRisco[]>([]);
     const [marker, setMarker] = useState<LatLng | null>(null);
+    const [locationStatus, setLocationStatus] = useState<Status | null>(null);
+    const [notification, setNotification] = useState<string | null>(null);
+    const [notificationKey, setNotificationKey] = useState<number>(Date.now());
 
-    // Componente interno para lidar com eventos do mapa
     const MapClickHandler = () => {
         useMapEvents({
             click(e) {
-                setMarker(e.latlng); // Define a posição do novo marcador
+                setMarker(e.latlng);
                 if (token) {
-                    // Envia a localização para o backend, sem logar erros no console
-                    checkLocation(token, e.latlng.lat, e.latlng.lng).catch(() => {});
+                    checkLocation(token, e.latlng.lat, e.latlng.lng)
+                        .then(response => {
+                            const status = {
+                                inRiskArea: response.data.emZonaDeRisco,
+                                message: response.data.message
+                            };
+                            setLocationStatus(status);
+                            setNotification(status.message);
+                            setNotificationKey(Date.now()); // Update key to force re-render
+                        })
+                        .catch(() => {
+                            setLocationStatus(null);
+                            setNotification("Erro ao verificar a localização.");
+                            setNotificationKey(Date.now()); // Update key even on error
+                        });
                 }
             },
         });
@@ -58,6 +78,9 @@ const DashboardPage: React.FC = () => {
 
     const handleRemoveMarker = () => {
         setMarker(null);
+        setLocationStatus(null);
+        setNotification(null);
+        setNotificationKey(Date.now()); // Reset key when marker is removed
     }
 
     useEffect(() => {
@@ -72,6 +95,7 @@ const DashboardPage: React.FC = () => {
 
     return (
         <div className="dashboard-container">
+            {notification && <Notification key={notificationKey} message={notification} onClose={() => setNotification(null)} />}
             <header className="dashboard-header">
                 <h1>Simular Localização</h1>
             </header>
@@ -81,20 +105,14 @@ const DashboardPage: React.FC = () => {
                         url={TILE_LAYER_URL}
                         attribution={TILE_LAYER_ATTRIBUTION}
                     />
-
-                    {/* Componente para escutar cliques no mapa */}
                     <MapClickHandler />
-
-                    {/* Renderiza as zonas de risco */}
                     {zones.map(zone => (
                         <Polygon key={zone.id} pathOptions={redOptions} positions={zone.area.coordinates[0].map((coord) => [coord[1], coord[0]]) as LatLngExpression[]} />
                     ))}
-
-                    {/* Renderiza o marcador se ele existir */}
                     {marker && (
                         <Marker position={marker} icon={defaultIcon}>
                             <Popup>
-                                Localização selecionada. <br />
+                                {locationStatus ? locationStatus.message : "Verificando..."} <br />
                                 <button onClick={handleRemoveMarker}>Remover</button>
                             </Popup>
                         </Marker>
