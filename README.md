@@ -2,9 +2,9 @@
 
 ## Overview
 
-**GeoProtect** is a system primarily focused on providing a robust **RESTful API** for managing and querying geographic risk zones. Developed as a university project, its core is a Spring Boot backend designed for high-performance geospatial data processing.
+**GeoProtect** is a**RESTful API** for managing and querying geographic risk zones. Developed as a university project, its core is a Spring Boot backend designed for geospatial data processing.
 
-A separate **React frontend** application is included as a **demonstration and testing interface**. This frontend allows for the visualization of geographic risk zones on an interactive map and real-time location simulation, showcasing the API's capabilities.
+A separate **React frontend** application is included as a **demonstration and testing interface**. This frontend allows for the visualization of geographic risk zones on an interactive map and real-time location simulation.
 
 The entire system is secured by JWT-based authentication, ensuring that only authorized users can access the API's functionalities.
 
