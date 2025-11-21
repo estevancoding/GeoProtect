@@ -10,23 +10,6 @@ The entire system is secured by JWT-based authentication, ensuring that only aut
 
 ---
 
-## Key Features
-
-- **Backend (RESTful API):**
-  - User authentication with JSON Web Tokens (JWT).
-  - Secure endpoints for listing and checking risk zones.
-  - Integration with a geospatial database for high-performance queries.
-  - Initial data loading from a GeoJSON file.
-
-- **Frontend (Simulation Dashboard):**
-  - Secure login screen.
-  - Interactive map that displays risk zones loaded from the backend.
-  - Feature to add a marker by clicking on the map.
-  - Real-time verification to check if the marker's location is within a risk zone (with feedback in the backend console).
-  - Automatic logout in case of an expired or invalid token.
-
----
-
 ## Tech Stack
 
 | Category | Technology |
