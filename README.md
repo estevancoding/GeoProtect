@@ -21,11 +21,3 @@ The entire system is secured by JWT-based authentication, ensuring that only aut
 | **Map** | Leaflet, React-Leaflet |
 | **Build & Dependencies** | Maven (Backend), NPM (Frontend) |
 | **Authentication** | JSON Web Token (JWT) |
-
----
-
-## Authors
-
-*   Jordan Estevan Rodrigues Dos Santos
-*   Gustavo Lopes Silva
-*   Vilson da Silva Juvencio Junior
